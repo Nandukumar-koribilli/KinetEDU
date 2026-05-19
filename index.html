@@ -256,7 +256,8 @@
 
     <!-- AUTHENTICATION MODAL (Dual Tab: Login / Sign Up) -->
     <div class="modal-overlay" id="auth-modal">
-        <div class="modal-card glass-card" id="auth-card">
+        <div class="modal-card-scroll-wrapper">
+            <div class="modal-card glass-card" id="auth-card">
             <button class="modal-close" id="auth-modal-close" aria-label="Close modal">&times;</button>
             
             <div class="modal-tabs">
@@ -344,6 +345,7 @@
                 <button type="submit" class="btn btn-primary w-full btn-submit" id="signup-submit-btn" disabled>Create Account</button>
             </form>
         </div>
+        </div>
     </div>
 
     <!-- STUDENT DASHBOARD MODAL (Simulated post-login interface) -->
@@ -408,6 +410,7 @@
     <!-- Link custom JS scripts -->
     <script src="three-effects.js"></script>
     <script src="tilt-effect.js"></script>
+    <script src="cursor-effect.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

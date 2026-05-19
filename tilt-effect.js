@@ -75,6 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
+        // 6. Interactive Glass Buttons
+        const buttons = document.querySelectorAll('.btn');
+        if (buttons.length > 0) {
+            VanillaTilt.init(buttons, {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.4,
+                scale: 1.05,
+                perspective: 800
+            });
+        }
+        
     } else {
         console.warn('VanillaTilt is not loaded yet. Glare and 3D tilting are disabled.');
     }

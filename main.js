@@ -55,7 +55,130 @@ document.addEventListener('DOMContentLoaded', () => {
     const dbAvatar = document.getElementById('db-avatar');
     const dbUserStream = document.getElementById('db-user-stream');
     const dbSyllabusTitle = document.getElementById('db-syllabus-title');
-    const dbSyllabusList = document.getElementById('db-syllabus-list');
+    const dbSyllabusList = document.getElementById('db-syllabus-list');    // ==========================================================================
+    // Custom Select Dropdown UI logic
+    // ==========================================================================
+    const setupCustomSelects = () => {
+        const nativeSelects = [signupPursuing, signupStream];
+        
+        nativeSelects.forEach(selectElement => {
+            if (!selectElement) return;
+            
+            // Hide native select element
+            selectElement.style.display = 'none';
+            
+            // Create custom dropdown HTML markup wrappers
+            const wrapper = document.createElement('div');
+            wrapper.className = 'custom-select-wrapper';
+            if (selectElement.disabled) {
+                wrapper.classList.add('disabled');
+            }
+            
+            const customSelect = document.createElement('div');
+            customSelect.className = 'custom-select';
+            customSelect.id = 'custom-' + selectElement.id;
+            
+            const trigger = document.createElement('div');
+            trigger.className = 'custom-select-trigger';
+            
+            const triggerText = document.createElement('span');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            triggerText.textContent = selectedOption ? selectedOption.textContent : 'Select...';
+            trigger.appendChild(triggerText);
+            
+            const arrow = document.createElement('div');
+            arrow.className = 'custom-select-arrow';
+            trigger.appendChild(arrow);
+            customSelect.appendChild(trigger);
+            
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'custom-options-container';
+            
+            // Populate option items dynamically
+            const populateOptions = () => {
+                optionsContainer.innerHTML = '';
+                Array.from(selectElement.options).forEach(option => {
+                    if (option.disabled && option.value === '') return; // Skip placeholder
+                    
+                    const opt = document.createElement('div');
+                    opt.className = 'custom-option';
+                    opt.textContent = option.textContent;
+                    opt.setAttribute('data-value', option.value);
+                    
+                    if (option.value === selectElement.value && option.value !== '') {
+                        opt.classList.add('selected');
+                    }
+                    
+                    opt.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        selectElement.value = option.value;
+                        selectElement.dispatchEvent(new Event('change'));
+                        customSelect.classList.remove('open');
+                    });
+                    
+                    optionsContainer.appendChild(opt);
+                });
+            };
+            
+            populateOptions();
+            customSelect.appendChild(optionsContainer);
+            wrapper.appendChild(customSelect);
+            
+            // Place the custom selector directly after the native dropdown
+            selectElement.parentNode.insertBefore(wrapper, selectElement.nextSibling);
+            
+            // Click to toggle dropdown popup
+            trigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (selectElement.disabled) return;
+                
+                document.querySelectorAll('.custom-select').forEach(cs => {
+                    if (cs !== customSelect) cs.classList.remove('open');
+                });
+                
+                customSelect.classList.toggle('open');
+            });
+            
+            // Watch native select element attribute changes (e.g. disabled and child options list)
+            const observer = new MutationObserver(() => {
+                if (selectElement.disabled) {
+                    wrapper.classList.add('disabled');
+                    customSelect.classList.remove('open');
+                } else {
+                    wrapper.classList.remove('disabled');
+                }
+                populateOptions();
+                const active = selectElement.options[selectElement.selectedIndex];
+                triggerText.textContent = active ? active.textContent : 'Select...';
+            });
+            
+            observer.observe(selectElement, { attributes: true, childList: true, subtree: true });
+            
+            // Sync selection state visuals on change event
+            selectElement.addEventListener('change', () => {
+                const active = selectElement.options[selectElement.selectedIndex];
+                triggerText.textContent = active ? active.textContent : 'Select...';
+                
+                optionsContainer.querySelectorAll('.custom-option').forEach(opt => {
+                    if (opt.getAttribute('data-value') === selectElement.value) {
+                        opt.classList.add('selected');
+                    } else {
+                        opt.classList.remove('selected');
+                    }
+                });
+            });
+        });
+        
+        // Close custom select dropdowns when clicking anywhere outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.custom-select').forEach(cs => {
+                cs.classList.remove('open');
+            });
+        });
+    };
+    
+    // Initialize custom selects
+    setupCustomSelects();
 
     // ==========================================================================
     // Mobile Navigation Hamburger Toggle
