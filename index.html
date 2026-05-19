@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KinetEdu - Premium Student Learning Platform</title>
+    
+    <!-- Google Fonts: Outfit for Headings, Plus Jakarta Sans for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- WebGL Background Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="site-logo">
+                <span class="logo-text">Kinet</span><span class="logo-accent">Edu</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#plans" class="nav-link">Plans</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+            </ul>
+            
+            <div class="nav-auth">
+                <button class="btn btn-outline" id="nav-login-btn">Login</button>
+                <button class="btn btn-primary" id="nav-signup-btn">Sign Up</button>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <div class="badge">🚀 Next-Gen Student Portal</div>
+                <h1 class="hero-title">Empowering Engineers & Students Alike</h1>
+                <p class="hero-subtitle">
+                    Access premium study resources, dynamic mock tests, and 24/7 AI-driven doubt solving. Build your pathway to academic excellence with customized resources tailored to your stream.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" id="hero-get-started">Get Started Free</button>
+                    <a href="#features" class="btn btn-outline btn-lg">Explore Features</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- 3D Tilting Card Visual -->
+                <div class="glass-card main-stats-card" data-tilt data-tilt-max="15" data-tilt-glare data-tilt-max-glare="0.3">
+                    <div class="stats-header">
+                        <h3>Student Dashboard</h3>
+                        <span class="stats-status">Live</span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-num">50K+</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">24/7</span>
+                            <span class="stat-label">AI Doubts Solved</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">98.4%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-num">150+</span>
+                            <span class="stat-label">Expert Curated Guides</span>
+                        </div>
+                    </div>
+                    <div class="stats-footer">
+                        <p class="stats-announcement">🏆 <strong>Next Quiz:</strong> Engineering Maths Challenge tomorrow!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="section-header">
+                <h2 class="section-title">Engineered for Academic Success</h2>
+                <p class="section-desc">We break down complex academic tracks into bite-sized, engaging, and structured learning components.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card glass-card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="feature-icon icon-ai">🤖</div>
+                    <h3>AI Doubt Solver</h3>
+                    <p>Instant answers and deep explanations for complex formulas, code, or theories, customized to your syllabus.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card glass-card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="feature-icon icon-book">📄</div>
+                    <h3>PYQ & Syllabus Hub</h3>
+                    <p>Access and download previous year question papers categorized by state board, university, and semester.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card glass-card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="feature-icon icon-trophy">🏆</div>
+                    <h3>Weekly Quizzes</h3>
+                    <p>Participate in online mock exams and subject-specific quizzes to win certifications and rewards.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card glass-card" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                    <div class="feature-icon icon-chart">📊</div>
+                    <h3>Progress Tracker</h3>
+                    <p>Visually track your syllabus completion rate and set study schedules that adapt to your examination dates.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plans Section -->
+        <section class="plans-section" id="plans">
+            <div class="section-header">
+                <h2 class="section-title">Subscription Plans</h2>
+                <p class="section-desc">Sustainable and budget-friendly pricing designed to accommodate student budgets.</p>
+            </div>
+            
+            <div class="plans-grid">
+                <!-- Plan 1: Free -->
+                <div class="plan-card glass-card" data-tilt data-tilt-max="8">
+                    <div class="plan-badge">Basic</div>
+                    <h3 class="plan-name">Free</h3>
+                    <div class="plan-price">₹0<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li>Standard PYQ papers</li>
+                        <li>5 AI Doubts per day</li>
+                        <li>General syllabus outline</li>
+                        <li class="disabled">Monthly prize pool eligibility</li>
+                        <li class="disabled">Personal tutor dashboard</li>
+                    </ul>
+                    <button class="btn btn-outline w-full plan-btn" data-plan="Free">Start Learning</button>
+                </div>
+                
+                <!-- Plan 2: Monthly (Popular) -->
+                <div class="plan-card glass-card popular" data-tilt data-tilt-max="8">
+                    <div class="plan-badge">Popular</div>
+                    <h3 class="plan-name">Monthly</h3>
+                    <div class="plan-price">₹99<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li>Unlimited PYQ download</li>
+                        <li>Unlimited AI Doubt Solver</li>
+                        <li>Step-by-step video solutions</li>
+                        <li>Eligible for quiz contest prizes</li>
+                        <li class="disabled">1-on-1 expert support</li>
+                    </ul>
+                    <button class="btn btn-primary w-full plan-btn" data-plan="Monthly">Get Premium</button>
+                </div>
+                
+                <!-- Plan 3: Yearly -->
+                <div class="plan-card glass-card" data-tilt data-tilt-max="8">
+                    <div class="plan-badge">Best Value</div>
+                    <h3 class="plan-name">Yearly</h3>
+                    <div class="plan-price">₹799<span>/year</span></div>
+                    <ul class="plan-features">
+                        <li>All Monthly benefits</li>
+                        <li>33% savings over monthly billing</li>
+                        <li>Offline PDF downloads</li>
+                        <li>Verified course certificates</li>
+                        <li>Priority email & chat support</li>
+                    </ul>
+                    <button class="btn btn-outline w-full plan-btn" data-plan="Yearly">Subscribe Yearly</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about-section" id="about">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title">About KinetEdu</h2>
+                    <p class="about-text">
+                        KinetEdu is a centralized, digital operating system built for secondary, polytechnic, and engineering students in India. We aim to replace disorganized study groups and fragmented resource repositories with a single, streamlined, and high-performance portal.
+                    </p>
+                    <p class="about-text">
+                        Our platform empowers students with structured roadmaps, interactive problem-solving tools, and community-driven rewards. By combining student feedback with state-of-the-art technological features, KinetEdu makes studying less stressful and more rewarding.
+                    </p>
+                    <div class="about-metrics">
+                        <div class="metric-item">
+                            <span class="metric-val">4K+</span>
+                            <span class="metric-lbl">Colleges</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-val">₹10K</span>
+                            <span class="metric-lbl">Monthly Prizes</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-val">100K+</span>
+                            <span class="metric-lbl">Tests Taken</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="glass-card mission-card" data-tilt data-tilt-max="10">
+                        <div class="mission-icon">🎯</div>
+                        <h3>Our Core Mission</h3>
+                        <p class="mission-text">
+                            "To democratize high-quality academic support and engineering guides, ensuring that every student has the tools to succeed, regardless of their stream or background."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text">Kinet</span><span class="logo-accent">Edu</span>
+                <p>Empowering Students, Accelerating Futures.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KinetEdu. All rights reserved. Made for academic excellence.</p>
+        </div>
+    </footer>
+
+    <!-- AUTHENTICATION MODAL (Dual Tab: Login / Sign Up) -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-card glass-card" id="auth-card">
+            <button class="modal-close" id="auth-modal-close" aria-label="Close modal">&times;</button>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" id="tab-login-btn">Login</button>
+                <button class="tab-btn" id="tab-signup-btn">Sign Up</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="login-form" class="modal-form active">
+                <h3 class="form-title">Welcome Back</h3>
+                <p class="form-subtitle">Login to access your study materials</p>
+                
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required placeholder="name@domain.com" autocomplete="email">
+                    <span class="field-error" id="login-email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" autocomplete="current-password">
+                    <span class="field-error" id="login-password-error"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-full btn-submit">Sign In</button>
+            </form>
+            
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="modal-form">
+                <h3 class="form-title">Create Account</h3>
+                <p class="form-subtitle">Join thousands of students on KinetEdu</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signup-firstname">First Name</label>
+                        <input type="text" id="signup-firstname" required placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-lastname">Last Name</label>
+                        <input type="text" id="signup-lastname" required placeholder="Last name">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required placeholder="name@domain.com" autocomplete="email">
+                    <span class="field-error" id="signup-email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required placeholder="••••••••" autocomplete="new-password">
+                    <span class="field-error" id="signup-password-error"></span>
+                    
+                    <!-- Password Strength Checklist -->
+                    <div class="validation-checklist" id="signup-password-checklist">
+                        <div class="check-item invalid" data-rule="length"><span>✖</span> At least 8 characters</div>
+                        <div class="check-item invalid" data-rule="uppercase"><span>✖</span> At least one uppercase letter (A-Z)</div>
+                        <div class="check-item invalid" data-rule="lowercase"><span>✖</span> At least one lowercase letter (a-z)</div>
+                        <div class="check-item invalid" data-rule="digit"><span>✖</span> At least one digit (0-9)</div>
+                        <div class="check-item invalid" data-rule="special"><span>✖</span> At least one special symbol (@$!%*?&amp;)</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signup-pursuing">Pursuing Studies</label>
+                        <select id="signup-pursuing" required>
+                            <option value="" disabled selected>Select level...</option>
+                            <option value="10th">10's Class</option>
+                            <option value="inter">Intermediate (12th)</option>
+                            <option value="diploma">Diploma (Polytechnic)</option>
+                            <option value="btech">B.Tech (Engineering)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-stream">Branch / Stream</label>
+                        <select id="signup-stream" required disabled>
+                            <option value="" disabled selected>Select pursuing level first...</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-full btn-submit" id="signup-submit-btn" disabled>Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- STUDENT DASHBOARD MODAL (Simulated post-login interface) -->
+    <div class="modal-overlay" id="dashboard-modal">
+        <div class="dashboard-card glass-card">
+            <button class="modal-close" id="dashboard-modal-close" aria-label="Close dashboard">&times;</button>
+            
+            <div class="dashboard-sidebar">
+                <div class="user-profile">
+                    <div class="user-avatar" id="db-avatar">KE</div>
+                    <h3 id="db-user-name">Welcome Student</h3>
+                    <span class="user-badge" id="db-user-stream">B.Tech - CSE</span>
+                </div>
+                <ul class="db-menu">
+                    <li class="active">📅 My Schedule</li>
+                    <li>📚 PYQ Library</li>
+                    <li>🤖 Ask AI Tutor</li>
+                    <li>🏆 Leaderboard</li>
+                </ul>
+            </div>
+            
+            <div class="dashboard-main">
+                <div class="db-header">
+                    <h2>Student Dashboard</h2>
+                    <span class="current-date">Term: Summer 2026</span>
+                </div>
+                
+                <div class="db-welcome-banner">
+                    <h3>Hello, <span id="db-user-firstname">Student</span>! 👋</h3>
+                    <p>Welcome back to your personalized study station. Let's make today productive.</p>
+                </div>
+                
+                <div class="db-grid">
+                    <!-- Progress Card -->
+                    <div class="db-card card-progress">
+                        <h4>Syllabus Completion</h4>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 65%;"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span>Completed: 65%</span>
+                            <span>Remaining: 35%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic Stream Card -->
+                    <div class="db-card card-stream">
+                        <h4>Syllabus for <span id="db-syllabus-title">Your Course</span></h4>
+                        <ul class="syllabus-list" id="db-syllabus-list">
+                            <li>Loading course structures...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CDNs: Three.js and Vanilla-Tilt.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Link custom JS scripts -->
+    <script src="three-effects.js"></script>
+    <script src="tilt-effect.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
